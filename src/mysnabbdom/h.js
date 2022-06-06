@@ -22,7 +22,7 @@ export default function h(sel, data, c) {
         children.push(c[i])
       }
     }
-    return vnode(sel, data, children, c, undefined)
+    return vnode(sel, data, children, undefined, undefined)
   } else if (typeof c == 'object' && c.hasOwnProperty('sel')) {
     // 形态3
     return vnode(sel, data, [c], undefined, undefined)
