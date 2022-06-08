@@ -1,5 +1,6 @@
 import vnode from './vnode'
 import createElement from './createElement'
+import updataChildren from './updataChildren'
 
 export default function patch(oldVnode, newVnode) {
   // 判断第一个参数是否是DOM节点
@@ -17,7 +18,6 @@ export default function patch(oldVnode, newVnode) {
   // 判断oldVnode和newVnode是不是同一个节点
   if (oldVnode.sel === newVnode.sel && oldVnode.key === newVnode.key) {
     // 是同一个节点
-    console.log('是同一个节点', oldVnode === newVnode)
     if (oldVnode !== newVnode) {
       // newVnode有没有text属性
       if (
@@ -41,7 +41,7 @@ export default function patch(oldVnode, newVnode) {
             oldVnode.elm.appendChild(createElement(newVnode.children[i]))
           }
         } else {
-          alert(1)
+          updataChildren(oldVnode.elm, oldVnode.children, newVnode.children)
         }
       }
     }
